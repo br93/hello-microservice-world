@@ -8,4 +8,12 @@ spring:
   cloud:
     config:
       profile: dev
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - '*'
+hello-world:
+  greeting: "Olá"
+  default-value: "Mundo"
