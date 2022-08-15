@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: hello-world
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - '*'
+hello-world:
+  greeting: "Ola"
+  default-value: "QA"

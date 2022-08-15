@@ -8,11 +8,11 @@
 		<version>2.7.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>br.com.br1</groupId>
-	<artifactId>greating-service</artifactId>
+	<groupId>br.com.microservice</groupId>
+	<artifactId>hello-microservice-world</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>greating-service</name>
-	<description>Demo project - Microservices</description>
+	<name>hello-microservice-world</name>
+	<packaging>pom</packaging>
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2021.0.3</spring-cloud.version>
@@ -20,15 +20,12 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
+			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-config</artifactId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
 		<dependency>
@@ -36,12 +33,8 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-configuration-processor</artifactId>
-			<optional>true</optional>
-		</dependency>
 	</dependencies>
+	
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -63,4 +56,13 @@
 		</plugins>
 	</build>
 
+	<modules>
+		<module>service-registry</module>
+		<module>api-gateway</module>
+		<module>config-server</module>
+		<module>local-config-server</module>
+		<module>hello-world</module>
+		<module>currency-exchange-microservice</module>
+		<module>books-microservice</module>
+	</modules>
 </project>
