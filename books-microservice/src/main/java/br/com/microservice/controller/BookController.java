@@ -13,7 +13,10 @@ import br.com.microservice.dto.BookMapper;
 import br.com.microservice.service.BookService;
 import br.com.microservice.service.PriceService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
+@Tag(name = "Book endpoint")
 @RestController
 @RequestMapping("books")
 public class BookController {
@@ -28,6 +31,7 @@ public class BookController {
 		this.priceService = priceService;
 	}
 
+	@Operation(summary = "Find a specific book by your ID")
 	@GetMapping("web-client/{id}/{currency}")
 	public ResponseEntity<BookDTO> findBook_webClient(@PathVariable Long id, @PathVariable String currency) {
 
@@ -44,6 +48,7 @@ public class BookController {
 		return new ResponseEntity<>(dto, HttpStatus.OK);
 	}
 
+	@Operation(summary = "Find a specific book by your ID")
 	@GetMapping("{id}/{currency}")
 	@CircuitBreaker(name = "default", fallbackMethod = "fallbackMethod")
 	public ResponseEntity<BookDTO> findBook_openFeign(@PathVariable Long id, @PathVariable String currency) {

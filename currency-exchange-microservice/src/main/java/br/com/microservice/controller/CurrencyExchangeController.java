@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.microservice.dto.CurrencyExchangeDTO;
 import br.com.microservice.dto.CurrencyExchangeMapper;
 import br.com.microservice.service.CurrencyExchangeService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
+@Tag(name = "Cambio Service API")
 @RestController
 @RequestMapping("exchange")
 public class CurrencyExchangeController {
@@ -24,6 +27,7 @@ public class CurrencyExchangeController {
 		this.currencyExchangeService = currencyExchangeService;
 	}
 
+	@Operation(description = "Get cambio from currency")
 	@GetMapping("{value}/{oldCurrency}/{newCurrency}")
 	public CurrencyExchangeDTO getExchangeCurrency(@PathVariable BigDecimal value, @PathVariable String oldCurrency,
 			@PathVariable String newCurrency) {
